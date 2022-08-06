@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LocalisationSystem
 {
-    
-    
     public enum Language
     {
         Japanese,
@@ -17,30 +15,26 @@ public class LocalisationSystem
     private static Dictionary<string, string> localisedJP;
     private static Dictionary<string, string> localisedEN;
 
-    public static bool isInit;
+    public static bool isInit = false;
 
     public static csvLoader CSVLoader;
     public static void Init()
     {
-
-        csvLoader CSVLoader = new csvLoader();
+        CSVLoader = new csvLoader();
         CSVLoader.loadCSV();
 
         UpdateDictionnaries();
        
         isInit = true;
-
     }
 
     public static void UpdateDictionnaries()
     {
-        localisedJP = CSVLoader.GetDictionaryValues("jp");
-        localisedEN = CSVLoader.GetDictionaryValues("en");
-
+        localisedJP = CSVLoader.GetDictionaryValues((int)Language.Japanese);
+        localisedEN = CSVLoader.GetDictionaryValues((int)Language.English);
     }
 
     public static Dictionary<string, string> GetDictionaryForEditor()
-
     {
         if(!isInit) { Init();  }
         return localisedEN;

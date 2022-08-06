@@ -19,51 +19,19 @@ public class csvLoader
         csvFile = Resources.Load<TextAsset>("Localisation");
     }
 
-    public Dictionary<string, string> GetDictionaryValues(string attributedID)
+    public Dictionary<string, string> GetDictionaryValues(int attributedID)
     {
         Dictionary<string, string> dictionary = new Dictionary<string, string>();
 
-        string[] lines = csvFile.text.Split(lineSeparator);
+        StringReader reader = new StringReader(csvFile.text);
 
-        Debug.Log(lineSeparator);
-
-        int attributeIndex = -1;
-
-        string[] headers = lines[0].Split(fieldSeparator, StringSplitOptions.None);
-
-        for (int i=0; i<headers.Length; i++)
+        while (reader.Peek() != -1)
         {
-            if (headers[i].Contains(attributedID))
+            string line = reader.ReadLine();
+            var splitStr = line.Split(',');
+            if (!dictionary.ContainsKey(splitStr[0]))
             {
-                attributeIndex = i;
-                break;
-
-            }
-        }
-
-        Regex CSVParser = new Regex(",(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))");
-
-        for(int i=1; i<lines.Length; i++)
-        {
-            string line = lines[i];
-
-            string[] fields = CSVParser.Split(line);
-
-            for(int f=0; f<fields.Length; f++)
-            {
-                fields[f] = fields[f].TrimStart(' ', surround);
-                fields[f] = fields[f].TrimEnd(surround);
-            }
-
-            if(fields.Length > attributeIndex)
-            {
-                var key = fields[0];
-
-                if(dictionary.ContainsKey(key)) { continue; }
-
-                var value = fields[attributeIndex];
-
-                dictionary.Add(key, value);
+                dictionary.Add(splitStr[0], splitStr[attributedID + 1]);
             }
         }
 
