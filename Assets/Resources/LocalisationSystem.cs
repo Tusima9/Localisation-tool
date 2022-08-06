@@ -58,40 +58,29 @@ public class LocalisationSystem
         return value;
     }
 
-    public static void Add(string key, string value)
+    public static void Add(string key, string jp_value, string en_value)
     {
-        if (value.Contains("\""))
-        {
-            value.Replace('"', '\"');
-        }
-
         if (CSVLoader == null)
         {
             CSVLoader = new csvLoader();
         }
 
         CSVLoader.loadCSV();
-        CSVLoader.Add(key, value);
+        CSVLoader.Add(key, jp_value, en_value);
         CSVLoader.loadCSV();
 
         UpdateDictionnaries();
     }
 
-    public static void Replace(string key,string value)
+    public static void Replace(string key,string jp_value, string en_value)
     {
-
-        if (value.Contains("\""))
-        {
-            value.Replace('"', '\"');
-        }
-
         if (CSVLoader == null)
         {
             CSVLoader = new csvLoader();
         }
 
         CSVLoader.loadCSV();
-        CSVLoader.Edit(key, value);
+        CSVLoader.Edit(key, jp_value, en_value);
         CSVLoader.loadCSV();
 
         UpdateDictionnaries();

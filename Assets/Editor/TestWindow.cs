@@ -3,8 +3,9 @@ using UnityEditor;
 
 public class TestWindow : EditorWindow
 {
-    public string key;
-    public string value;
+    public string key = "key";
+    public string jp_value = "jp value";
+    public string en_value = "en value";
 
     [MenuItem("Tool/Test Window")]
     public static void Init()
@@ -17,26 +18,19 @@ public class TestWindow : EditorWindow
     public void OnGUI()
     {
         key = EditorGUILayout.TextField("Key :", key);
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Value:", GUILayout.MaxWidth(50));
-
-        EditorStyles.textArea.wordWrap = true;
-        value = EditorGUILayout.TextArea(value, EditorStyles.textArea, GUILayout.Height(100), GUILayout.Width(400));
-        EditorGUILayout.EndHorizontal();
+        jp_value = EditorGUILayout.TextField("jp :", jp_value);
+        en_value = EditorGUILayout.TextField("en :", en_value);
 
         if (GUILayout.Button("Add"))
         {
             if (LocalisationSystem.GetLocalisedValue(key) != string.Empty)
             {
-                LocalisationSystem.Replace(key, value);
+                LocalisationSystem.Replace(key, jp_value, en_value);
             }
             else
             {
-                LocalisationSystem.Add(key, value);
+                LocalisationSystem.Add(key, jp_value, en_value );
             }
         }
-
-        minSize = new Vector2(460, 250);
-        maxSize = minSize;
     }
 }

@@ -39,9 +39,9 @@ public class csvLoader
     }
 
 #if UNITY_EDITOR
-    public void Add(string key, string value)
+    public void Add(string key, string jp, string en)
     {
-        string appended = string.Format("\n\"{0}\",\"{1}\",\"\"", key, value);
+        string appended = string.Format("\n{0},{1},{2}", key, jp, en);
         File.AppendAllText("Assets/Resources/Localisation.csv", appended);
 
         UnityEditor.AssetDatabase.Refresh();
@@ -83,10 +83,10 @@ public class csvLoader
         }
     }
 
-    public void Edit(string key, string value)
+    public void Edit(string key, string jp_value, string en_value)
     {
         Remove(key);
-        Add(key, value);
+        Add(key, jp_value, en_value);
     }
 #endif
 }
