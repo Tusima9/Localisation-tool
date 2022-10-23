@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localisedString:
-    key: 
+    key: Action_Busy
 --- !u!114 &846141917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localisedString:
-    key: 
+    key: working_Question
 --- !u!114 &1184848547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localisedString:
-    key: 
+    key: Test_1
 --- !u!114 &1622135645
 MonoBehaviour:
   m_ObjectHideFlags: 0

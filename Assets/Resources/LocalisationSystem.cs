@@ -4,43 +4,37 @@ using UnityEngine;
 
 public class LocalisationSystem
 {
-    
-    
     public enum Language
     {
         Japanese,
         English 
     }
 
-    public static Language language = Language.English;
+    public static Language language = Language.Japanese;
 
     private static Dictionary<string, string> localisedJP;
     private static Dictionary<string, string> localisedEN;
 
-    public static bool isInit;
+    public static bool isInit = false;
 
     public static csvLoader CSVLoader;
     public static void Init()
     {
-
-        csvLoader CSVLoader = new csvLoader();
+        CSVLoader = new csvLoader();
         CSVLoader.loadCSV();
 
         UpdateDictionnaries();
        
         isInit = true;
-
     }
 
     public static void UpdateDictionnaries()
     {
-        localisedJP = CSVLoader.GetDictionaryValues("jp");
-        localisedEN = CSVLoader.GetDictionaryValues("en");
-
+        localisedJP = CSVLoader.GetDictionaryValues((int)Language.Japanese);
+        localisedEN = CSVLoader.GetDictionaryValues((int)Language.English);
     }
 
     public static Dictionary<string, string> GetDictionaryForEditor()
-
     {
         if(!isInit) { Init();  }
         return localisedEN;
@@ -64,40 +58,29 @@ public class LocalisationSystem
         return value;
     }
 
-    public static void Add(string key, string value)
+    public static void Add(string key, string jp_value, string en_value)
     {
-        if (value.Contains("\""))
-        {
-            value.Replace('"', '\"');
-        }
-
         if (CSVLoader == null)
         {
             CSVLoader = new csvLoader();
         }
 
         CSVLoader.loadCSV();
-        CSVLoader.Add(key, value);
+        CSVLoader.Add(key, jp_value, en_value);
         CSVLoader.loadCSV();
 
         UpdateDictionnaries();
     }
 
-    public static void Replace(string key,string value)
+    public static void Replace(string key,string jp_value, string en_value)
     {
-
-        if (value.Contains("\""))
-        {
-            value.Replace('"', '\"');
-        }
-
         if (CSVLoader == null)
         {
             CSVLoader = new csvLoader();
         }
 
         CSVLoader.loadCSV();
-        CSVLoader.Edit(key, value);
+        CSVLoader.Edit(key, jp_value, en_value);
         CSVLoader.loadCSV();
 
         UpdateDictionnaries();

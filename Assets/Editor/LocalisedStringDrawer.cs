@@ -51,7 +51,7 @@ public class LocalisedStringDrawer : PropertyDrawer
 
         if(GUI.Button(position, searchContent))
         {
-            TextLocaliserSearchWindow.Open();
+            TextLocaliserSearchWindow.Init();
         }
 
         position.x = position.width + 2;
@@ -59,10 +59,10 @@ public class LocalisedStringDrawer : PropertyDrawer
         Texture storeIcon = (Texture)Resources.Load("store");
         GUIContent storeContent = new GUIContent(storeIcon);
 
-        if(GUI.Button(position,storeContent))
-        {
-            TextLocaliserEditWindow.Open(key.stringValue);
-        }
+        //if(GUI.Button(position,storeContent))
+        //{
+        //    TextLocaliserEditor.Open(key.stringValue);
+        //}
 
         if(dropdown)
         {

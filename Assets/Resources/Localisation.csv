@@ -1,4 +1,7 @@
-"key","jp","en"
-"Hello_world","‰‚ß‚Ü‚µ‚Ä!","Hello world!"
-"working_Question","‘åä•v‚©‚ÈH","is it working?"
-"translate_me","–|–ó‚µ‚ë","translate me!"
+key,jp,en
+working_Question,å‹•ã‘ã‚‹ã‹ãªï¼Ÿ,is it working?
+translate_me,ç¿»è¨³ã—ã¦ãã ã•ã„,translate me!
+,,
+Action_Busy,ãŠå¾…ã¡ãã ã•ã„ã€‚,Busy
+
+Test_1,ãƒ†ã‚¹ãƒˆ,test
