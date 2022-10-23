@@ -10,7 +10,7 @@ public class LocalisationSystem
         English 
     }
 
-    public static Language language = Language.English;
+    public static Language language = Language.Japanese;
 
     private static Dictionary<string, string> localisedJP;
     private static Dictionary<string, string> localisedEN;
